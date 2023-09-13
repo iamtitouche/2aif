@@ -18,15 +18,17 @@ public class TestRationnal {
         nb2.setDen(3);
 
         number.mult(nb2);
-
         System.out.print(number.toString() + "\n");
 
         number.mult(number);
-
         System.out.print(number.toString() + "\n");
 
         number.reduce();
-
         System.out.print(number.toString() + "\n");
+
+
+        Rationnal c = new Rationnal();
+        c = Rationnal.mult_2(number, nb2);
+        System.out.print(c.toString() + "\n");
     }
 }

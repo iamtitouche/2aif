@@ -47,6 +47,15 @@ public class Rationnal {
     public void sum(Rationnal a) {
         num = num * a.den + den * a.num;
         den = den * a.den;
+        reduce();
+    }
+
+
+    public static Rationnal mult_2(Rationnal a, Rationnal b) {
+        Rationnal product = new Rationnal();
+        product.num = a.num * b.num;
+        product.den = a.den * b.den;
+        return product;
     }
 
 }
