@@ -1,7 +1,7 @@
 public class ListElementInt {
     private int value;
-     ListElementInt next;
-     ListElementInt previous;
+    ListElementInt next;
+    ListElementInt previous;
 
 
     public void setValue(int n) {
@@ -11,4 +11,13 @@ public class ListElementInt {
     public int getValue() {
         return value;
     }
+
+    public ListElementInt getNext() {
+        return next;
+    }
+
+    public ListElementInt getPrevious() {
+        return previous;
+    }
+
 }

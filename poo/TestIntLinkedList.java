@@ -11,7 +11,13 @@ public class TestIntLinkedList {
 
 
         System.out.print(list.getHeadValue() + "\n");
-        
 
+        list.append_int(4);
+
+        System.out.print(list.getHead().getNext().getValue() + "\n");
+
+        list.pop();
+
+        System.out.print(list.getQueue().getValue() + "\n");
     }
 }
