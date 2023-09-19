@@ -40,4 +40,25 @@ public class Vector {
         result += this.values[size - 1].getNum() + " / " + this.values[size - 1].getDen() + " )";
         return result;
     }
+
+    public Rationnal get(int i) {
+        return this.values[i];
+    }
+
+    public void mult(Rationnal r) {
+        for (int i = 0; i < this.size; i++) {
+            this.values[i].mult(r);
+        }
+    }
+
+    public void sum(Vector vect) {
+        if (vect.size != this.size) {
+            throw new IllegalArgumentException("Vector instances must have the same size");
+        }
+
+        for (int i = 0; i < size - 1; i++) {
+           this.values[i].sum(vect.values[i]);
+        }
+    }
+   
 }
