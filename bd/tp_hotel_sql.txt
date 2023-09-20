@@ -1,0 +1,17 @@
+SELECT NS, NomS, CapCh FROM resorts WHERE TypeS='montagne'
+
+SELECT NH, NomH, AdrH, TelH, CatH FROM hotels JOIN resorts ON hotels.NS = resorts.NS WHERE TypeS='mer'
+
+SELECT DISTINCT(NomS) FROM resorts join hotels on resorts.NS = hotels.NS where CatH = 4 and TypeS = 'mer'
+
+SELECT NomCl, AdrCl FROM guests, bookings join resorts on bookings.NS = resorts.NS where TypeS = 'mer'
+
+SELECT NCH from rooms join hotels on rooms.NH = hotels.NH joint on resorts.NS = hotels.NS where (Prix < 50 and CatH = 2 and TypeS = 'mer')
+
+SELECT NomCl from guests, bookings, rooms, resorts where (TypeCh = 'D' or TypeCh = 'DWC') and TypeS = 'mer'
+
+SELECT DISTINCT(NomCl) from guests, hotels where AdrH = AdrCl
+
+SELECT NH from hotels where CatH = 4 except
+
+SELECT NH, NomH, AdrH, CatH from hotels, rooms as r2 left outer join rooms on r2.NH = rooms.NH and r2.Prix = rooms.Prix and r2.nch!=rooms.nch

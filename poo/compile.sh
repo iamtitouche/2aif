@@ -22,9 +22,7 @@ done
 
 if [ $input = o ]
 then
-    read -p "Main Class : " input
-    echo "\n${PURPLE}============== Exécution =============${NC}\n"
-    java $input
+    java $1.java
 else
     echo "\n${PURPLE}======================================${NC}\n"
     exit 0
