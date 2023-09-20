@@ -28,10 +28,15 @@ public class TestVector {
 
         System.out.print(v.toString() + "\n");
 
+        ExtensibleVector ext_v = new ExtensibleVector(v.getDimension());
 
-        v.append(b);
+        ext_v.setRational(0, 0, 1);
+        ext_v.setRational(1, 0, 1);
+        
+
+        ext_v.append(b);
         System.out.print(v.toString() + "\n");
-
+        System.out.print(ext_v.toString() + "\n");
     }
 
 
