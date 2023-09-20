@@ -11,7 +11,7 @@ public class Vector {
         this.size = n;
     }
 
-    public int getSize() {
+    public int getDimension() {
         return this.size;
     } 
 
@@ -60,5 +60,16 @@ public class Vector {
            this.values[i].sum(vect.values[i]);
         }
     }
-   
+
+    public void append(Rationnal r) {
+        Vector vect = new Vector(this.size + 1);
+        for (int i = 0; i < this.size; i++) {
+            vect.values[i] = this.values[i];
+        }
+        vect.values[this.size] = r;
+        this.size++;
+        this.values = vect.values;
+    }
+
+
 }

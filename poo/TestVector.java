@@ -27,6 +27,11 @@ public class TestVector {
         System.out.print(a.toString() + "\n");
 
         System.out.print(v.toString() + "\n");
+
+
+        v.append(b);
+        System.out.print(v.toString() + "\n");
+
     }
 
 
