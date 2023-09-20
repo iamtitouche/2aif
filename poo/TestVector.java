@@ -2,14 +2,14 @@ public class TestVector {
     public static void main(String[] args) {
         Vector v = new Vector(2);
 
-        v.setRationnal(0, 0, 1);
-        v.setRationnal(1, 0, 1);
+        v.setRational(0, 0, 1);
+        v.setRational(1, 0, 1);
 
-        Rationnal a = new Rationnal(2, 3);
-        v.setRationnal(0, a);
+        Rational a = new Rational(2, 3);
+        v.setRational(0, a);
         System.out.print(v.toString() + "\n");
 
-        Rationnal b = new Rationnal(3, 2);
+        Rational b = new Rational(3, 2);
 
         a.mult(b);
 
@@ -17,11 +17,11 @@ public class TestVector {
 
 
 
-        v.setRationnal(0, 1, 2);
-        v.setRationnal(1, 1, 2);
+        v.setRational(0, 1, 2);
+        v.setRational(1, 1, 2);
         System.out.print(v.toString() + "\n");
 
-        a = new Rationnal(v.get(0));
+        a = new Rational(v.get(0));
         System.out.print(a.toString() + "\n");
         a.mult(b);
         System.out.print(a.toString() + "\n");

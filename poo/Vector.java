@@ -1,10 +1,10 @@
 public class Vector {
     private int size;
-    Rationnal [] values;
+    Rational [] values;
 
     public Vector(int n_element) {
         this.size = n_element;
-        this.values = new Rationnal[n_element];
+        this.values = new Rational[n_element];
     }
 
     public void setSize(int n) {
@@ -16,20 +16,20 @@ public class Vector {
     } 
 
 
-    public void setRationnal(int ind, int num, int den) {
+    public void setRational(int ind, int num, int den) {
         if (ind >= size) {
             throw new IllegalArgumentException("Index cannot be greater or equal than the n_elemnt attribut in Vector instance");
         }
 
-        this.values[ind] = new Rationnal(num, den);
+        this.values[ind] = new Rational(num, den);
     }
 
-    public void setRationnal(int ind, Rationnal r) {
+    public void setRational(int ind, Rational r) {
         if (ind >= size) {
             throw new IllegalArgumentException("Index cannot be greater or equal than the n_elemnt attribut in Vector instance");
         }
 
-        this.values[ind] = new Rationnal(r);
+        this.values[ind] = new Rational(r);
     }
 
     public String toString() {
@@ -41,11 +41,11 @@ public class Vector {
         return result;
     }
 
-    public Rationnal get(int i) {
+    public Rational get(int i) {
         return this.values[i];
     }
 
-    public void mult(Rationnal r) {
+    public void mult(Rational r) {
         for (int i = 0; i < this.size; i++) {
             this.values[i].mult(r);
         }
@@ -61,7 +61,7 @@ public class Vector {
         }
     }
 
-    public void append(Rationnal r) {
+    public void append(Rational r) {
         Vector vect = new Vector(this.size + 1);
         for (int i = 0; i < this.size; i++) {
             vect.values[i] = this.values[i];
