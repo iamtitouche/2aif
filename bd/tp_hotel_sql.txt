@@ -1,17 +1,97 @@
+
 SELECT NS, NomS, CapCh FROM resorts WHERE TypeS='montagne'
 
 SELECT NH, NomH, AdrH, TelH, CatH FROM hotels JOIN resorts ON hotels.NS = resorts.NS WHERE TypeS='mer'
 
 SELECT DISTINCT(NomS) FROM resorts join hotels on resorts.NS = hotels.NS where CatH = 4 and TypeS = 'mer'
 
-SELECT NomCl, AdrCl FROM guests, bookings join resorts on bookings.NS = resorts.NS where TypeS = 'mer'
+SELECT DISTINCT(guests.nomcl),guests.adrcl FROM guests INNER JOIN bookings ON bookings.ncl = guests.ncl INNER JOIN resorts ON resorts.ns = bookings.ns WHERE resorts.types = 'mer'
 
-SELECT NCH from rooms join hotels on rooms.NH = hotels.NH joint on resorts.NS = hotels.NS where (Prix < 50 and CatH = 2 and TypeS = 'mer')
 
-SELECT NomCl from guests, bookings, rooms, resorts where (TypeCh = 'D' or TypeCh = 'DWC') and TypeS = 'mer'
+###QUESTION R5
 
-SELECT DISTINCT(NomCl) from guests, hotels where AdrH = AdrCl
+SELECT
+    rooms.nch,
+    hotels.nomh
+FROM
+         rooms
+    INNER JOIN hotels ON rooms.nh = hotels.nh and rooms.ns = hotels.ns
+    INNER JOIN resorts ON resorts.ns = hotels.ns
+WHERE
+        resorts.types = 'montagne'
+    AND rooms.prix < 50
+    AND hotels.cath = 2
 
-SELECT NH from hotels where CatH = 4 except
 
+###QUESTION R6
+
+SELECT DISTINCT
+    (guests.nomcl), guests.ncl
+FROM
+         guests
+    INNER JOIN bookings ON guests.ncl = bookings.ncl
+    INNER JOIN rooms ON rooms.nch = bookings.nch and bookings.nh = rooms.nh and bookings.ns = rooms.ns
+    Inner JOIN resorts ON resorts.ns = bookings.ns
+WHERE
+        (rooms.typch = 'D' or rooms.typch = 'DWC')
+    AND resorts.types = 'mer'
+
+###QUESTION R7
+
+SELECT DISTINCT(NomCl) from guests inner join hotels on guests.adrcl = hotels.adrh
+
+###QUESTION R8
+
+SELECT
+    hotels.nomh, hotels.nh, hotels.ns
+FROM
+    hotels
+WHERE
+    hotels.cath = 4
+MINUS
+( SELECT
+    hotels.nomh, hotels.nh, hotels.ns
+FROM
+         hotels
+    INNER JOIN rooms ON hotels.ns = rooms.ns
+                        AND rooms.nh = hotels.nh
+WHERE
+    ( rooms.typch = 'D' )
+    OR ( rooms.typch = 'DWC' )
+    OR ( rooms.typch = 'S' )
+)
+
+
+###QUESTON R9
+SELECT
+    distinct hotels.nomh,
+    hotels.adrh,
+    hotels.cath,
+    hotels.nh,
+    hotels.ns
+FROM
+    hotels
+INNER JOIN rooms  r On r.NS = HOTELS.NS And r.NH = HOTELS.NH 
+Inner Join rooms rr ON rr.ns = hotels.ns
+         AND rr.nh = hotels.nh AND r.prix = rr.prix  AND r.nch != rr.nch
+
+
+###QUESTION R10
+
+
+select nomh from hotels inner join rooms as rr on rr.ns = hotels.ns and rr.nh = hotels.nh inner join rooms as rrr on rrr.ns = rr.ns and rrr.nh = rr.nh where rr.ns = rrr.ns and rr.nh = rrr.nh and rr.nch != rrr.nch and rr.prix = rrr.prix
 SELECT NH, NomH, AdrH, CatH from hotels, rooms as r2 left outer join rooms on r2.NH = rooms.NH and r2.Prix = rooms.Prix and r2.nch!=rooms.nch
+
+SELECT NomH, AdrH, CAtH from bookings, hotels group by NH 
+
+
+###QUESTION R13
+select nomh, adrh, cath, hotels.nh, hotels.ns from hotels minus select nomh, adrh, cath, hotels.nh, hotels.ns from hotels inner join rooms on rooms.ns = hotels.ns and hotels.nh = rooms.nh where Prix >= 40
+
+###QUESTION 14
+select min(prix) from rooms inner join hotels on rooms.nh = hotels.nh and hotels.ns = rooms.ns inner join resorts on resorts.ns = hotels.ns where types='mer' and cath=3
+
+
+
+###QUESTION16
+select distinct guests.nomcl, guests.ncl from guests inner join bookings b1 on b1.ncl = guests.ncl inner join bookings b2 on b1.nch=b2.nch and b1.ns=b2.ns and b1.nh=b2.nh and b1.ncl=b2.ncl and b1.jour-b2.jour=1 inner join bookings b3 on b1.nch=b3.nch and b1.ns=b3.ns and b1.nh=b3.nh and b1.ncl=b3.ncl and b1.jour-b3.jour=2
